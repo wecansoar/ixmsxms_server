@@ -15,8 +15,8 @@
 	</parent>
 	
 	<organization>
-		<name>Daum Corporation</name>
-		<url>http://www.daumcorp.com</url>
+		<name>Flower Corporation</name>
+		<url>http://www.flower.com</url>
 	</organization>
 
 	<repositories>
@@ -589,11 +589,11 @@
 			<artifactId>commons-lang</artifactId>
 			<version>2.6</version>
 		</dependency>
-		<dependency>
-			<groupId>net.daum.auth</groupId>
-			<artifactId>daumobf</artifactId>
-			<version>2.2</version>
-		</dependency>
+		<!--<dependency>-->
+			<!--<groupId>net.daum.auth</groupId>-->
+			<!--<artifactId>daumobf</artifactId>-->
+			<!--<version>2.2</version>-->
+		<!--</dependency>-->
 		<dependency>
 			<groupId>commons-beanutils</groupId>
 			<artifactId>commons-beanutils</artifactId>
@@ -809,16 +809,16 @@
 			<version>1.2.0</version>
 		</dependency>
 		
-		<dependency>
-			<groupId>net.daum.local</groupId>
-			<artifactId>congservice</artifactId>
-			<version>1.0</version>
-		</dependency>
-		<dependency>
-			<groupId>net.daum.local</groupId>
-			<artifactId>congtranscoordservice</artifactId>
-			<version>1.0</version>
-		</dependency>
+		<!--<dependency>-->
+			<!--<groupId>net.daum.local</groupId>-->
+			<!--<artifactId>congservice</artifactId>-->
+			<!--<version>1.0</version>-->
+		<!--</dependency>-->
+		<!--<dependency>-->
+			<!--<groupId>net.daum.local</groupId>-->
+			<!--<artifactId>congtranscoordservice</artifactId>-->
+			<!--<version>1.0</version>-->
+		<!--</dependency>-->
 		<dependency>
 			<groupId>org.jsoup</groupId>
 			<artifactId>jsoup</artifactId>
@@ -841,24 +841,24 @@
 			<version>1.6.5</version>
 		</dependency>
 		<!-- Only For FT: end -->
-		
-		<dependency>
-		  <groupId>net.daum.editor</groupId>
-		  <artifactId>daumeditor-converter-utils</artifactId>
-		  <version>3.0</version>
-		</dependency>
+		<!---->
+		<!--<dependency>-->
+		  <!--<groupId>net.daum.editor</groupId>-->
+		  <!--<artifactId>daumeditor-converter-utils</artifactId>-->
+		  <!--<version>3.0</version>-->
+		<!--</dependency>-->
 
-		<dependency>
-			<groupId>net.daum.editor</groupId>
-			<artifactId>daumeditor-autosave-utils</artifactId>
-			<version>3.0</version>
-		</dependency>
-		
-		<dependency>
-			<groupId>net.daum.editor</groupId>
-			<artifactId>daumeditor-tvpot-utils</artifactId>
-			<version>3.0</version>
-		</dependency>
+		<!--<dependency>-->
+			<!--<groupId>net.daum.editor</groupId>-->
+			<!--<artifactId>daumeditor-autosave-utils</artifactId>-->
+			<!--<version>3.0</version>-->
+		<!--</dependency>-->
+		<!---->
+		<!--<dependency>-->
+			<!--<groupId>net.daum.editor</groupId>-->
+			<!--<artifactId>daumeditor-tvpot-utils</artifactId>-->
+			<!--<version>3.0</version>-->
+		<!--</dependency>-->
 
 		<dependency>
 		   <groupId>com.google.code.gson</groupId>

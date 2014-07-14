@@ -49,7 +49,6 @@
           <element id="library" level="project" name="Maven: commons-dbcp:commons-dbcp:1.4" />
           <element id="library" level="project" name="Maven: commons-collections:commons-collections:3.2.1" />
           <element id="library" level="project" name="Maven: commons-discovery:commons-discovery:0.4" />
-          <element id="library" level="project" name="Maven: net.daum.auth:daumobf:2.2" />
           <element id="library" level="project" name="Maven: net.sf.ezmorph:ezmorph:1.0.6" />
           <element id="library" level="project" name="Maven: org.mybatis:mybatis:3.1.1" />
           <element id="library" level="project" name="Maven: org.mybatis:mybatis-spring:1.1.1" />
@@ -89,17 +88,10 @@
           <element id="library" level="project" name="Maven: com.googlecode.ehcache-spring-annotations:ehcache-spring-annotations:1.2.0" />
           <element id="library" level="project" name="Maven: com.google.guava:guava:r09" />
           <element id="library" level="project" name="Maven: net.sf.ehcache:ehcache-core:2.4.5" />
-          <element id="library" level="project" name="Maven: net.daum.local:congservice:1.0" />
-          <element id="library" level="project" name="Maven: net.daum.local:congtranscoordservice:1.0" />
           <element id="library" level="project" name="Maven: org.jsoup:jsoup:1.3.3" />
           <element id="library" level="project" name="Maven: rhino:js:1.6R7" />
           <element id="library" level="project" name="Maven: com.yahoo.platform.yui:yuicompressor:2.4.6" />
           <element id="library" level="project" name="Maven: ant:ant-nodeps:1.6.5" />
-          <element id="library" level="project" name="Maven: net.daum.editor:daumeditor-converter-utils:3.0" />
-          <element id="library" level="project" name="Maven: org.apache.maven:maven-plugin-api:2.0" />
-          <element id="library" level="project" name="Maven: net.daum.editor:daumeditor-autosave-utils:3.0" />
-          <element id="library" level="project" name="Maven: apache-logging:commons-logging:1.1.0.jboss" />
-          <element id="library" level="project" name="Maven: net.daum.editor:daumeditor-tvpot-utils:3.0" />
           <element id="library" level="project" name="Maven: com.google.code.gson:gson:2.2.2" />
           <element id="library" level="project" name="Maven: org.springframework.security:spring-security-web:3.1.3.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework.security:spring-security-core:3.1.3.RELEASE" />
