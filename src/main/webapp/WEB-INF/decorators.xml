@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<decorators defaultdir="/decorators">
+	<excludes>
+		<pattern>/error/*</pattern>		
+		<pattern>*.html</pattern>
+	</excludes>
+
+	<decorator name="form" page="form.vm">
+		<pattern>/**/form</pattern>
+		<pattern>/**/formFor*</pattern>
+	</decorator>
+	
+	<decorator name="view" page="view.vm">
+		<pattern>/**/view</pattern>
+		<pattern>/**/list</pattern>
+	</decorator>
+	
+	<decorator name="default" page="default.vm">
+		<pattern>/**</pattern>
+	</decorator>
+</decorators>

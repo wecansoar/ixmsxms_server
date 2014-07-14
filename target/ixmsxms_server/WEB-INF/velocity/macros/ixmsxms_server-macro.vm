@@ -1,0 +1,74 @@
+#macro( printPaginate $p )
+<script type="text/javascript">
+var goToCommentFrame = function(){ 
+	parent.scrollTo(0, daum.Element.getCoordsTarget( parent.$("talkIframe") , parent.$$("html")[0] ).top);
+};
+</script>
+#set( $temp = $baseURL.remove("p") )
+#set( $startPage = $p.startPage )
+#set( $endPage = $p.endPage )
+#set( $currentPage = $p.currentPage )
+#set( $beforeStartPage = $p.beforeStartPage )
+#set( $beforeEndPage= $p.beforeEndPage )
+#set( $nextStartPage = $p.nextStartPage )
+#set( $nextEndPage= $p.nextEndPage )
+<div class="pagination pagination-centered">
+<ul>
+#if( "$!beforeStartPage" != "" )<li><a href="$!baseURL.param('page', $beforeEndPage)"><span class="symbol">&lt;</span> $beforeStartPage ~ $beforeEndPage</a></li>#end
+#foreach( $p in [$startPage..$endPage] )
+	<li #if( $currentPage == $p )class="active" #{end}><a href="$!baseURL.param('page', $p)">$p</a></li>
+#end
+#if( "$!nextStartPage" != "" )<li><a href="$!baseURL.param('page', $nextStartPage)">$nextStartPage ~ $nextEndPage <span class="symbol">&gt;</span></a></li>#end
+</ul>
+</div>
+#end
+
+#macro (printToolbar $titltleName)
+<div class="btn-toolbar">
+	<div class="btn-group">
+		<a class="btn btn-small btn-success" disabled>$titltleName</a>
+		<a class="btn btn-small" disabled>총 $coreUtil.getNumberFormat(${totalCount})개</a>
+		#if ($adminHelp)
+			<a class="btn btn-small btn-info help">도움말 보기</a>
+		#end
+	</div>
+</div>
+#end
+
+#macro ( createSelectBox $option)
+	#set ($onchange= "")
+	#set($Q = '"')
+	#if($option.onChangeFunction)
+		#set($onchange="onchange=${Q}javascript: $!{option.onChangeFunction}${Q}")
+	#end
+	
+	#set($itemId = "")
+	#if ($option.id)
+		#set($itemId = "$option.id")
+	#else
+		#set($itemId = "$option.name")
+	#end
+	
+	<select name="$option.name" id="$itemId" style="$!{option.style}" $onchange $!{option.multiple}>
+	#if ($option.defaultValue)	
+	<option value="$option.defaultValue">$option.defaultText</option>
+	#end
+	
+	#set($_paramValue = "$coreUtil.getFieldValue($option.param, $option.paramField)")
+	
+	#foreach($item in $option.list)
+		#set($_fieldValue = "$coreUtil.getFieldValue($item, $option.valueField)")
+		#set($_fieldText = "$coreUtil.getFieldValue($item, $option.textField)")
+		#set($_prefixFieldText = "$coreUtil.getFieldValue($item, $option.prefixTextField)")
+				
+		#if ("$_prefixFieldText" != "")
+			#if ($option.prefixTextField == "seqName")
+				#set($_fieldText = $_prefixFieldText + ". " + $_fieldText)
+			#else
+				#set($_fieldText = $_prefixFieldText + " " + $_fieldText)
+			#end
+		#end
+		<option value="$_fieldValue" #if($_fieldValue.equals($_paramValue))selected#{end}>$_fieldText</option>
+	#end
+	</select>
+#end

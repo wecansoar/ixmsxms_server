@@ -1,0 +1,97 @@
+<?xml version="1.1" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="net.flower.ixmsxms_server.dao.UserDao">
+    <select id="select"
+        parameterType="Long"
+        resultType="net.flower.ixmsxms_server.domain.User">
+        select
+        *
+        from user
+        where 1 = 1
+        and user_id = #{userId}
+    </select>
+
+    <sql id="fromAndWhere">
+        from user
+        where 1 = 1
+    </sql>
+
+    <select id="selectList"
+        parameterType="net.flower.ixmsxms_server.domain.User"
+        resultType="net.flower.ixmsxms_server.domain.User">
+        select
+        *
+        <include refid="fromAndWhere"/>
+        order by user_id desc
+        limit #{start}, #{count}
+    </select>
+
+    <select id="selectAllList"
+        parameterType="net.flower.ixmsxms_server.domain.User"
+        resultType="net.flower.ixmsxms_server.domain.User">
+        select
+        *
+        <include refid="fromAndWhere"/>
+        order by user_id desc
+        limit 1000
+    </select>
+
+    <select id="selectListCount"
+        parameterType="net.flower.ixmsxms_server.domain.User"
+        resultType="java.lang.Integer">
+        select
+        count(*)
+        <include refid="fromAndWhere"/>
+    </select>
+
+    <insert id="insert"
+        parameterType="net.flower.ixmsxms_server.domain.User">
+        insert into user
+        (
+              name
+            , email
+            , password
+            , phone
+            , user_status
+            , reg_datetime
+            , mod_datetime
+        )
+        values
+        (
+              #{name}
+            , #{email}
+            , #{password}
+            , #{phone}
+            , #{userStatus}
+            , sysdate()
+            , sysdate()
+        )
+
+        <selectKey keyProperty="userId" resultType="Long" order="AFTER">
+            select last_insert_id()
+        </selectKey>
+    </insert>
+
+    <update id="update"
+        parameterType="net.flower.ixmsxms_server.domain.User">
+        update user
+        set
+          name = #{name}
+        , email = #{email}
+        , password = #{password}
+        , phone = #{phone}
+        , user_status = #{userStatus}
+        , mod_datetime = sysdate()
+        where 1 = 1
+        and user_id = #{userId}
+    </update>
+
+    <delete id="delete"
+        parameterType="Long">
+        delete from user
+        where 1 = 1
+        and user_id = #{userId}
+    </delete>
+</mapper>

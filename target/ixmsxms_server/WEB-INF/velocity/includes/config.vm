@@ -1,0 +1,9 @@
+#set( $__URI = $request.getRequestURI() )
+#set( $baseURL = $!Link.absolute($__URI) )
+$baseURL.setParams($params, false)##
+$baseURL.setAppendParams(false)
+
+#set($deletePage = $coreUtil.getDeletePage($request))
+#set($__VERSION_PATH = "#include('/conf/version.path')" )
+#set($__JSPATH	= "$!{__VERSION_PATH}js" )
+#set($__CSSPATH = "$!{__VERSION_PATH}css" )

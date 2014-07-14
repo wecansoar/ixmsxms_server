@@ -1,0 +1,74 @@
+#parse("/includes/config.vm")##
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>ixmsxms_server</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="/favicon.ico?v=20131211" rel="icon" type="image/x-icon" />
+    <link href="$__CSSPATH/bootstrap.min.css" rel="stylesheet">
+    <link href="$__CSSPATH/bootstrap-responsive.css" rel="stylesheet">
+	<link href="$__CSSPATH/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    <link href="$__CSSPATH/common.css" rel="stylesheet">
+	<link href="$__CSSPATH/select2.min.css" rel="stylesheet">
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <script type="text/javascript" src="http://s1.daumcdn.net/svc/original/U03/cssjs/jquery/jquery-1.8.3.min.js"></script>
+	<script type="text/javascript" src="$__JSPATH/swfobject.js"></script>
+	<script type="text/javascript" src="$__JSPATH/jquery-ui.1.10.3.min.js"></script>
+	<script type="text/javascript" src="$__JSPATH/jquery.blockUI.js"></script>
+	<script type="text/javascript" src="$__JSPATH/jquery.cookie.js"></script>
+	<script type="text/javascript" src="$__JSPATH/bootstrap.js"></script>
+	<script type="text/javascript" src="$__JSPATH/bootstrap-alert.js"></script>
+	<script type="text/javascript" src="$__JSPATH/bootstrap-modal.js"></script>
+	<script type="text/javascript" src="$__JSPATH/bootstrap-dropdown.js"></script>
+	<script type="text/javascript" src="$__JSPATH/bootstrap-datetimepicker.min.js"></script>
+	<script type="text/javascript" src="$__JSPATH/bootstrap-datetimepicker.ko-KR.js"></script>
+	<script type="text/javascript" src="$__JSPATH/bootstrap-tooltip.js"></script>
+	<script type="text/javascript" src="$__JSPATH/bootstrap-popover.js"></script>
+	<script type="text/javascript" src="$__JSPATH/jquery.tmpl.min.js"></script>
+	<script type="text/javascript" src="$__JSPATH/purl.js"></script>
+	<script type="text/javascript" src="$__JSPATH/underscore.min.js"></script>
+	<script type="text/javascript" src="$__JSPATH/jshashtable-2.1.min.js"></script>
+	<script type="text/javascript" src="$__JSPATH/jquery.numberformatter-1.2.3.min.js"></script>
+	<script type="text/javascript" src="$__JSPATH/common.js"></script>
+	<script type="text/javascript" src="$__JSPATH/coca.js"></script>
+	<script type="text/javascript" src="$__JSPATH/select2.js"></script>
+	<script type="text/javascript" src="/tinymce/tinymce.min.js"></script>
+  </head>
+
+  <body data-spy="scroll" data-target=".bs-docs-sidebar">
+ <!-- Navbar
+    ================================================== -->
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand" href="/index">ixmsxms_server</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+			<!--	
+              <li class="active">
+                <a href="#">link</a>
+              </li>
+			  -->  
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>   
+	<div style="padding-top:70px">
+	<div class="container">
+		$body
+	</div>
+	</div> 
+  </body>
+</html>

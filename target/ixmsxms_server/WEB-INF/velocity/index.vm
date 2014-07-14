@@ -1,0 +1,5 @@
+사용자 정보
+<ul>
+ <li> 리스트 : <a href="/user/list">/user/list</a></li>
+ <li> 조회 : <a href="/user/1">/user/1</a></li>
+</ul>

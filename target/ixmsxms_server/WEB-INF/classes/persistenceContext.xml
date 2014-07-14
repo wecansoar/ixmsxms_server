@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xmlns:aop="http://www.springframework.org/schema/aop"
+     xmlns:tx="http://www.springframework.org/schema/tx"
+     xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+     xmlns:context="http://www.springframework.org/schema/context"
+     xmlns:p="http://www.springframework.org/schema/p"
+     xsi:schemaLocation="
+     http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+     http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+     http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.2.xsd
+     http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
+     http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd">
+    
+    <tx:annotation-driven />
+     
+	<bean id="defaultDataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close"
+		p:testOnBorrow="true"
+		p:testWhileIdle="true"
+		p:timeBetweenEvictionRunsMillis="10000"
+		p:minEvictableIdleTimeMillis="60000"
+		p:maxWait="10000"
+		p:maxActive="10"
+		p:maxIdle="10"
+		p:minIdle="0"
+		p:validationQuery="SELECT 1"
+		p:driverClassName="com.mysql.jdbc.Driver"
+		p:url="jdbc:mysql://127.0.0.1:3306/ixmsxms?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=utf8&amp;mysqlEncoding=utf8/null"
+		p:username="ixmsxms4"
+		p:password="#ixmsxms4#" 
+	/>
+						
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="defaultDataSource" />
+	</bean>
+	
+	<bean id="defaultSqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="defaultDataSource" />
+		<property name="configLocation" value="classpath:mapperConfig.xml"/>
+        <property name="mapperLocations" value="classpath:net/flower/ixmsxms_server/dao/impl/*.xml"/>
+	</bean>
+
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="net.flower.ixmsxms_server.dao" />
+		<property name="sqlSessionFactory" ref="defaultSqlSessionFactory" />
+		<property name="annotationClass" value="net.flower.ixmsxms_server.dao.Master" />
+	</bean>
+</beans>

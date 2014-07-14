@@ -1,0 +1,60 @@
+<div id="addModal" data-backdrop="static" class="modal hide" tabindex="-1" role="dialog" aria-labelledby="storyModalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="storyModalLabel">User</h3>
+    </div>
+    <div class="modal-body">
+        <form id="addForm" onsubmit="return false;" class="bs-docs-example form-horizontal">
+        <input type="hidden" id="addForm_userId" name="userId" value="$!{coreUtil.escapeHtml($item.userId)}">
+        <div class="control-group">
+            <label class="control-label ">닉네임</label>
+            <div class="controls ">
+                <input type="text" id="addForm_name" name="name" placeholder="name" value="$!{coreUtil.escapeHtml($item.name)}">
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label required">email</label>
+            <div class="controls ">
+                <input type="text" id="addForm_email" name="email" placeholder="email" value="$!{coreUtil.escapeHtml($item.email)}">
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label required">password</label>
+            <div class="controls ">
+                <input type="text" id="addForm_password" name="password" placeholder="password" value="$!{coreUtil.escapeHtml($item.password)}">
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label ">핸드폰번호</label>
+            <div class="controls ">
+                <input type="text" id="addForm_phone" name="phone" placeholder="phone" value="$!{coreUtil.escapeHtml($item.phone)}">
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label required">가입상태</label>
+            <div class="controls ">
+                <input type="text" id="addForm_userStatus" name="userStatus" placeholder="userStatus" value="$!{coreUtil.escapeHtml($item.userStatus)}">
+            </div>
+        </div>
+
+      #if($item)
+        <div class="control-group">
+            <label class="control-label">등록일시</label>
+            <div class="controls">
+                <div class="control-text">$!{coreUtil.getFormat($item.regDatetime)}</div>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label">수정일시</label>
+            <div class="controls">
+                <div class="control-text">$!{coreUtil.getFormat($item.modDatetime)}</div>
+            </div>
+        </div>
+      #end
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-small" id="saveButton">저장</button>
+        <button class="btn btn-small" data-dismiss="modal" aria-hidden="true">닫기</button>
+    </div>
+</div>
