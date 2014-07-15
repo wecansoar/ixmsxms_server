@@ -55,10 +55,4 @@ public class UserController extends DefaultController {
         return this.userService.delete(userId);
     }
 
-    @RequestMapping("/form")
-    public void form(HttpServletRequest request, User user) {
-        if (user.getUserId() != null) {
-            this.addAllAttributes(request, this.userService.select(user.getUserId()));
-        }
-    }
 }

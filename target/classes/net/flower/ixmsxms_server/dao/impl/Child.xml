@@ -1,0 +1,92 @@
+<?xml version="1.1" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="net.flower.ixmsxms_server.dao.ChildDao">
+
+
+    <sql id="fromAndWhere">
+        from child
+        where 1 = 1
+    </sql>
+
+    <select id="selectListByUserId"
+        parameterType="net.flower.ixmsxms_server.domain.Child"
+        resultType="net.flower.ixmsxms_server.domain.Child">
+        select
+        *
+        <include refid="fromAndWhere"/>
+        and user_id = #{userId}
+        order by user_id desc
+        limit #{start}, #{count}
+    </select>
+    <select id="select"
+            parameterType="Long"
+            resultType="net.flower.ixmsxms_server.domain.Child">
+        select
+        *
+        <include refid="fromAndWhere"/>
+        and child_id = #{childId}
+    </select>
+
+    <select id="selectListCountByUserId"
+            parameterType="net.flower.ixmsxms_server.domain.Child"
+            resultType="int">
+        select
+        count(child_id)
+        <include refid="fromAndWhere"/>
+        and user_id = #{userId}
+        and status = 'S'
+    </select>
+
+    <insert id="insert"
+            parameterType="net.flower.ixmsxms_server.domain.Child">
+        insert into child
+        (
+        user_id
+        , name
+        , sex
+        , birthday_date
+        , image_url
+        , status
+        , reg_datetime
+        , mod_datetime
+        )
+        values
+        (
+        #{userId}
+        , #{name}
+        , #{sex}
+        , #{birthdayDate}
+        , #{imageUrl}
+        , 'S'
+        , sysdate()
+        , sysdate()
+        )
+
+        <selectKey keyProperty="childId" resultType="Long" order="AFTER">
+            select last_insert_id()
+        </selectKey>
+    </insert>
+
+    <update id="update"
+            parameterType="net.flower.ixmsxms_server.domain.Child">
+        update user
+        set
+        name = #{name}
+        , sex = #{email}
+        , birthday_date = #{birthdayDate}
+        , image_url = #{imageUrl}
+        , status = #{status}
+        , mod_datetime = sysdate()
+        where 1 = 1
+        and child_id = #{childId}
+    </update>
+
+    <delete id="delete"
+            parameterType="Long">
+        delete from child
+        where 1 = 1
+        and child_id = #{childId}
+    </delete>
+</mapper>
