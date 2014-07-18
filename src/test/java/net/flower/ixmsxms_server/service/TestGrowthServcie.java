@@ -24,7 +24,7 @@ public class TestGrowthServcie extends TestCore {
     @Test
     public void insert(){
         Growth growth = new Growth();
-        growth.setGrowDate("20140102");
+        growth.setGrowthDate("20140102");
         growth.setStature(Float.parseFloat("100"));
         growth.setWeight(Float.parseFloat("10.5"));
         growth.setNote("오늘은 잘   먹는다.ㅡ");

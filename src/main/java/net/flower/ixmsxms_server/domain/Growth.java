@@ -3,8 +3,26 @@ package net.flower.ixmsxms_server.domain;
 import java.util.Date;
 
 public class Growth extends BaseObject {
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
+    private Long userId;
     private Long growthId;
-    private String growDate;
+
+    public String getGrowthDate() {
+        return growthDate;
+    }
+
+    public void setGrowthDate(String growthDate) {
+        this.growthDate = growthDate;
+    }
+
+    private String growthDate;
     private Float stature;
     private Float weight;
     private String note;
@@ -36,15 +54,6 @@ public class Growth extends BaseObject {
     public void setGrowthId(Long growthId) {
         this.growthId = growthId;
     }
-
-    public String getGrowDate() {
-        return growDate;
-    }
-
-    public void setGrowDate(String growDate) {
-        this.growDate = growDate;
-    }
-
 
     public String getNote() {
         return note;

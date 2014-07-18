@@ -40,7 +40,8 @@
             parameterType="net.flower.ixmsxms_server.domain.Growth">
         insert into growth
         (
-         grow_date
+        user_id
+        , grow_date
         , stature
         , weight
         , note
@@ -50,7 +51,8 @@
         )
         values
         (
-         #{growDate}
+        #{userId}
+        , #{growDate}
         , #{stature}
         , #{weight}
         , #{note}

@@ -21,6 +21,15 @@ public class GrowthController extends DefaultController {
     @Resource
     private GrowthService growthService;
 
+
+
+    @RequestMapping(value="/{growthId}", method=RequestMethod.GET)
+    @ResponseBody
+    public Object view(@PathVariable("growthId") Long growthId ,  Growth growth) {
+//        growth.setGrowthId(growthId);
+        return this.growthService.select(growthId);
+    }
+
     @RequestMapping(value="/list", method=RequestMethod.GET)
     @ResponseBody
     public Object list(Growth growth) {

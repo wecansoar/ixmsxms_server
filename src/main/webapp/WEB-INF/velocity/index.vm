@@ -57,8 +57,37 @@
 
 <h3>3. 성장정보 등록</h3>
 <ul>
-</ul>
+    <li> 리스트 : <a href="/growth/list?userId=1">/growth/list?userId=1</a></li>
+    <li> 조회 : <a href="/growth/1">/growth/1</a></li>
+    <li> 등록 : /growth/add method=POST </li>
+##    <li> 수정 : /growth/1 method=PUT </li>
+##    <li> 삭제 : /growth/1 method=DELETE </li>
 
+</ul>
+<pre>
+    <textarea style="width:100%;height:200px;">
+        성장 정보
+        Growth growth = new Growth();
+        growth.setGrowDate("20140102");
+        growth.setStature(Float.parseFloat("100"));
+        growth.setWeight(Float.parseFloat("10.5"));
+        growth.setNote("오늘은 잘   먹는다.ㅡ");
+
+        List<GrowthChildMap> growthChildMapList = new ArrayList<GrowthChildMap>();
+
+        GrowthChildMap growthChildMap = new GrowthChildMap();
+        growthChildMap.setChildId(Long.parseLong("1"));
+
+        growthChildMapList.add(growthChildMap);
+
+        List<GrowthItem> growthItemList = new ArrayList<GrowthItem>();
+
+        GrowthItem growthItem = new GrowthItem();
+        growthItem.setGrowthType("IMAGE"); // "PROGRESS"
+        growthItem.setImageUrl("http://i2.media.daumcdn.net/svc/image/U03/news/201407/18/yonhap/20140718212408213.jpg");
+        growthItemList.add(growthItem);
+    </textarea>
+</pre>
 <h3>4. 평균 성장 get</h3>
 <ul>
 </ul>
