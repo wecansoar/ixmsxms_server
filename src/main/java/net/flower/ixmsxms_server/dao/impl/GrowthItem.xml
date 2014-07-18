@@ -1,0 +1,36 @@
+<?xml version="1.1" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="net.flower.ixmsxms_server.dao.GrowthItemDao">
+    <insert id="insert" parameterType="net.flower.ixmsxms_server.domain.GrowthItem">
+        insert into growth_item
+        (
+        growth_id
+        , growth_type
+        , image_url
+        , progress_id
+        , reg_datetime
+        , mod_datetime
+        )
+        values
+        (
+        #{growthId}
+        , #{growthType}
+        , #{imageUrl}
+        , #{progressId}
+        , sysdate()
+        , sysdate()
+        )
+        <selectKey keyProperty="itemId" resultType="Long" order="AFTER">
+            select last_insert_id()
+        </selectKey>
+    </insert>
+
+    <delete id="delete" parameterType="net.flower.ixmsxms_server.domain.GrowthItem">
+        delete from growth_item
+        where 1 = 1
+        and item_id = #{itemId}
+        and growth_id = #{growthId}
+    </delete>
+</mapper>

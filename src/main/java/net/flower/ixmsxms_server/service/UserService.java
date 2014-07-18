@@ -25,10 +25,6 @@ public class UserService {
         return this.userDao.select(userId);
     }
 
-    public List<User> selectAllList(User user) {
-        return this.userDao.selectAllList(user);
-    }
-
     public Map<String, Object> selectList(User user) {
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("list", this.userDao.selectList(user));

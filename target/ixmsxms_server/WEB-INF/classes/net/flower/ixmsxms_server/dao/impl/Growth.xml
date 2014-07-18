@@ -17,12 +17,30 @@
         and growth_id = #{growthId}
     </select>
 
+    <select id="selectListByUserId"
+            parameterType="net.flower.ixmsxms_server.domain.Growth"
+            resultType="net.flower.ixmsxms_server.domain.Growth">
+        select
+        *
+        <include refid="fromAndWhere"/>
+        and user_id = #{userId}
+        and status = 'S'
+    </select>
+    <select id="selectListCountByUserId"
+            parameterType="net.flower.ixmsxms_server.domain.Growth"
+            resultType="int">
+        select
+        count(growth_id)
+        <include refid="fromAndWhere"/>
+        and user_id = #{userId}
+        and status = 'S'
+    </select>
+
     <insert id="insert"
             parameterType="net.flower.ixmsxms_server.domain.Growth">
         insert into growth
         (
-        child_id
-        , grow_date
+         grow_date
         , stature
         , weight
         , note
@@ -32,8 +50,7 @@
         )
         values
         (
-        #{childId}
-        , #{growDate}
+         #{growDate}
         , #{stature}
         , #{weight}
         , #{note}
@@ -49,10 +66,9 @@
 
     <update id="update"
             parameterType="net.flower.ixmsxms_server.domain.Growth">
-        update user
+        update growth
         set
-        child_id = #{childId}
-        , grow_date = #{growDate}
+         grow_date = #{growDate}
         , stature = #{stature}
         , weight = #{weight}
         , note = #{note}

@@ -90,7 +90,10 @@
 
     <delete id="delete"
         parameterType="Long">
-        delete from user
+        update user
+        set
+         user_status = 'LEAVE'
+        , mod_datetime = sysdate()
         where 1 = 1
         and user_id = #{userId}
     </delete>

@@ -4,13 +4,30 @@ import java.util.Date;
 
 public class Growth extends BaseObject {
     private Long growthId;
-    private Long childId;
     private String growDate;
-    private Long stature;
-    private Long weight;
+    private Float stature;
+    private Float weight;
     private String note;
+
+
     private Date regDatetime;
     private Date modDatetime;
+
+    public Float getWeight() {
+        return weight;
+    }
+
+    public void setWeight(Float weight) {
+        this.weight = weight;
+    }
+
+    public Float getStature() {
+        return stature;
+    }
+
+    public void setStature(Float stature) {
+        this.stature = stature;
+    }
 
     public Long getGrowthId() {
         return growthId;
@@ -18,14 +35,6 @@ public class Growth extends BaseObject {
 
     public void setGrowthId(Long growthId) {
         this.growthId = growthId;
-    }
-
-    public Long getChildId() {
-        return childId;
-    }
-
-    public void setChildId(Long childId) {
-        this.childId = childId;
     }
 
     public String getGrowDate() {
@@ -36,21 +45,6 @@ public class Growth extends BaseObject {
         this.growDate = growDate;
     }
 
-    public Long getStature() {
-        return stature;
-    }
-
-    public void setStature(Long stature) {
-        this.stature = stature;
-    }
-
-    public Long getWeight() {
-        return weight;
-    }
-
-    public void setWeight(Long weight) {
-        this.weight = weight;
-    }
 
     public String getNote() {
         return note;
