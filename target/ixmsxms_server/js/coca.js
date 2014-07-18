@@ -1,4 +1,4 @@
-document.domain='daum.net';
+//document.domain='daum.net';
 
 function getSWF(movieName){
   return (navigator.appName.indexOf("Microsoft") != -1)?window[movieName]:document[movieName];

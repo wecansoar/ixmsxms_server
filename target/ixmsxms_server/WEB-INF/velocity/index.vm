@@ -1,3 +1,33 @@
+
+<h1>File Upload Form</h1>
+<fieldset>
+    <legend>Upload File</legend>
+    <form action="upload" method="post" encType="multipart/form-data">
+        <input type="hidden" name="userId" value="1">
+        <label for="fileName">Select File: </label>
+        <input id="fileName" type="file" name="files[0]" size="30" /><br/>
+        <input  type="file" name="files[1]" size="30" /><br/>
+        <input type="submit" value="Upload"/>
+    </form>
+</fieldset>
+<pre>
+    <textarea style="width:100%;height:200px;">
+    이미지 정보 등록시 참고
+
+    <fieldset>
+        <legend>Upload File</legend>
+        <form action="upload" method="post" encType="multipart/form-data">
+            <input type="hidden" name="userId" value="1">
+            <label for="fileName">Select File: </label>
+            <input id="fileName" type="file" name="files[0]" size="30" /><br/>
+            <input  type="file" name="files[1]" size="30" /><br/>
+            <input type="submit" value="Upload"/>
+        </form>
+    </fieldset>
+    </textarea>
+</pre>
+
+<hr>
 <h3>1. 사용자 정보</h3>
 <ul>
  <li> 리스트 : <a href="/user/list">/user/list</a></li>
@@ -23,3 +53,11 @@
     child.setSex("F");
     child.setBirthdayDate("20120909");
     </pre>
+
+<h3>3. 성장정보 등록</h3>
+<ul>
+</ul>
+
+<h3>4. 평균 성장 get</h3>
+<ul>
+</ul>
