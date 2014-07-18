@@ -47,6 +47,12 @@ public class UserService {
         return map;
     }
 
+    public Map<String, Object> updateLastLogin(Long userId) {
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("row", this.userDao.updateByLastlogin(userId));
+        return map;
+    }
+
     public Map<String, Object> delete(Long userId) {
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("row", this.userDao.delete(userId));

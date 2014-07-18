@@ -9,8 +9,17 @@ public class User extends BaseObject {
     private String password;
     private String phone;
     private String userStatus;
+    private Date lastLoginDatetime;
     private Date regDatetime;
     private Date modDatetime;
+
+    public Date getLastLoginDatetime() {
+        return lastLoginDatetime;
+    }
+
+    public void setLastLoginDatetime(Date lastLoginDatetime) {
+        this.lastLoginDatetime = lastLoginDatetime;
+    }
 
     public Long getUserId() {
         return this.userId;

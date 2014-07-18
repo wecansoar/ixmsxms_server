@@ -49,6 +49,12 @@ public class UserController extends DefaultController {
         return this.userService.update(user);
     }
 
+    @RequestMapping(value="/login/{userId}", method=RequestMethod.PUT)
+    @ResponseBody
+    public Object editLogin(@PathVariable("userId") Long userId) {
+        return this.userService.updateLastLogin(userId);
+    }
+
     @RequestMapping(value="/{userId}", method=RequestMethod.DELETE)
     @ResponseBody
     public Object delete(@PathVariable("userId") Long userId) {

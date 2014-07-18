@@ -28,16 +28,6 @@
         limit #{start}, #{count}
     </select>
 
-    <select id="selectAllList"
-        parameterType="net.flower.ixmsxms_server.domain.User"
-        resultType="net.flower.ixmsxms_server.domain.User">
-        select
-        *
-        <include refid="fromAndWhere"/>
-        order by user_id desc
-        limit 1000
-    </select>
-
     <select id="selectListCount"
         parameterType="net.flower.ixmsxms_server.domain.User"
         resultType="java.lang.Integer">
@@ -86,6 +76,13 @@
         , mod_datetime = sysdate()
         where 1 = 1
         and user_id = #{userId}
+    </update>
+
+    <update id="updateByLastlogin" >
+        update user
+           set last_login_datetime = sysdate()
+         where 1 = 1
+           and user_id = #{userId}
     </update>
 
     <delete id="delete"
