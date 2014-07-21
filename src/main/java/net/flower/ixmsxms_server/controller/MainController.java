@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
-
 @Controller
 public class MainController {
 

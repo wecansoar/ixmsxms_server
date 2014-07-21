@@ -51,21 +51,29 @@
 
 	<!-- Handler Configuration -->
 	<bean
-		class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping"
+		class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"
 		p:interceptors-ref="defaultHandlerInterceptors" p:order="0" />
 
-	<util:list id="defaultHandlerInterceptors">		
-		<bean class="net.flower.ixmsxms_server.utils.DefaultInterceptor"/>
-	</util:list>
+    <util:list id="defaultHandlerInterceptors">
+        <bean class="net.flower.ixmsxms_server.utils.DefaultInterceptor"/>
+        <bean class="net.flower.ixmsxms_server.utils.RequiredRefererInterceptor">
+            <constructor-arg>
+                <list>
+                    <value>localhost</value>
+                    <value>cod.dev.daum.net</value>
+                </list>
+            </constructor-arg>
+        </bean>
+    </util:list>
 
 	<bean
-		class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter"
+		class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"
 		p:webBindingInitializer-ref="configurableWebBindingInitializer">
-		
+
 		<property name="messageConverters">
   			<bean class="net.flower.ixmsxms_server.utils.GsonHttpMessageConverter" />
   		</property>
-		
+
 	</bean>
 
 	<bean id="configurableWebBindingInitializer"

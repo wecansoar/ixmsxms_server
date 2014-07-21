@@ -3,6 +3,7 @@ package net.flower.ixmsxms_server.controller;
 import net.flower.ixmsxms_server.domain.Child;
 import net.flower.ixmsxms_server.service.ChildService;
 import net.flower.ixmsxms_server.service.UserService;
+import net.flower.ixmsxms_server.utils.RequiredReferer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -22,6 +23,7 @@ public class ChildController extends DefaultController {
     @RequestMapping(value="/list", method=RequestMethod.GET)
     @ResponseBody
     public Object list(Child child) {
+        System.out.println("violetjjang ");
         return this.childService.selectListByUserId(child);
     }
 
