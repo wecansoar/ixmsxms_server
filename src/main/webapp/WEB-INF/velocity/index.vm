@@ -96,3 +96,7 @@
 <ul>
     <li> 조회 : <a href="/notice/list">/notice/list</a></li>
 </ul>
+<h3>6. 프로그램및 버젼정보 </h3>
+<ul>
+    <li> 조회 : <a href="/program">/program</a></li>
+</ul>
