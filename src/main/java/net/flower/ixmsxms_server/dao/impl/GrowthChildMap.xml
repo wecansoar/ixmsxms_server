@@ -3,6 +3,16 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="net.flower.ixmsxms_server.dao.GrowthChildMapDao">
 
+    <select id="selectList"
+            parameterType="Long"
+            resultType="net.flower.ixmsxms_server.domain.GrowthChildMap">
+        select
+        *
+        from growth_child_map
+        where 1=1
+        and growth_id = #{growthId}
+    </select>
+
     <insert id="insert"
             parameterType="net.flower.ixmsxms_server.domain.GrowthChildMap">
         insert into growth_child_map
@@ -19,6 +29,8 @@
         , sysdate()
         , sysdate()
         )
+        on duplicate key update
+        reg_datetime = now()
         <selectKey keyProperty="id" resultType="Long" order="AFTER">
             select last_insert_id()
         </selectKey>

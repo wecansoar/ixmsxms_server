@@ -11,13 +11,14 @@ import net.flower.ixmsxms_server.utils.PaginateTool;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-//@Transactional
+@Transactional
 @Service
 public class GrowthService {
     protected Logger logger = LoggerFactory.getLogger(getClass());
@@ -31,8 +32,12 @@ public class GrowthService {
     @Resource
     private GrowthItemDao growthItemDao;
 
-    public Growth select(Long growthId) {
-        return this.growthDao.select(growthId);
+    public Growth selectByGrowthId(Long growthId) {
+        Growth growth = this.growthDao.select(growthId);
+        growth.setGrowthItems(this.growthItemDao.selectList(growthId));
+        growth.setGrowthChildMaps(this.growthChildMapDao.selectList(growthId));
+
+        return growth;
     }
 
     public Map<String, Object> selectListByUserId(Growth growth) {
@@ -48,10 +53,10 @@ public class GrowthService {
     public Map<String, Object> insert(Growth growth, List<GrowthChildMap> growthChildMaps, List<GrowthItem> growthItems) {
         Map<String, Object> map = new HashMap<String, Object>();
         this.logger.debug("@@@ growthID LONG");
+        map.put("row", this.growthDao.insert(growth));
 
-        Integer growthId = this.growthDao.insert(growth);
-
-        this.logger.debug("@@@ growthID = " + growthId);
+        Long growthId = growth.getGrowthId();
+        this.logger.debug("@@@ growthID = " + growth.getGrowthId());
 
         if(growthId != 0){
             for( GrowthChildMap growthChildMap : growthChildMaps){
@@ -73,7 +78,6 @@ public class GrowthService {
             }
         }
 
-        map.put("item", growth);
         return map;
     }
 

@@ -23,13 +23,13 @@ public class ChildController extends DefaultController {
     @RequestMapping(value="/list", method=RequestMethod.GET)
     @ResponseBody
     public Object list(Child child) {
-        System.out.println("violetjjang ");
         return this.childService.selectListByUserId(child);
     }
 
     @RequestMapping(value="/{childId}", method=RequestMethod.GET)
     @ResponseBody
-    public Object view(@PathVariable("childId") Long childId,Child child){
+    @RequiredReferer
+    public Object view(@PathVariable("childId") Long childId){
         return this.childService.select(childId);
     }
 

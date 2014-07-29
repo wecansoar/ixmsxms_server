@@ -41,7 +41,7 @@
         insert into growth
         (
         user_id
-        , grow_date
+        , growth_date
         , stature
         , weight
         , note
@@ -52,7 +52,7 @@
         values
         (
         #{userId}
-        , #{growDate}
+        , #{growthDate}
         , #{stature}
         , #{weight}
         , #{note}
@@ -61,7 +61,7 @@
         , sysdate()
         )
 
-        <selectKey keyProperty="growthId" resultType="Long" order="AFTER">
+        <selectKey keyProperty="growthId" resultType="java.lang.Long" order="AFTER">
             select last_insert_id()
         </selectKey>
     </insert>

@@ -1,6 +1,7 @@
 package net.flower.ixmsxms_server.domain;
 
 import java.util.Date;
+import java.util.List;
 
 public class Growth extends BaseObject {
     public Long getUserId() {
@@ -13,23 +14,38 @@ public class Growth extends BaseObject {
 
     private Long userId;
     private Long growthId;
-
-    public String getGrowthDate() {
-        return growthDate;
-    }
-
-    public void setGrowthDate(String growthDate) {
-        this.growthDate = growthDate;
-    }
-
     private String growthDate;
     private Float stature;
     private Float weight;
     private String note;
-
-
     private Date regDatetime;
     private Date modDatetime;
+
+    // related
+    private List<GrowthChildMap> growthChildMaps;
+    private List<GrowthItem> growthItems;
+
+    public String getGrowthDate() {
+        return growthDate;
+    }
+    public void setGrowthDate(String growthDate) {
+        this.growthDate = growthDate;
+    }
+    public List<GrowthChildMap> getGrowthChildMaps() {
+        return growthChildMaps;
+    }
+
+    public void setGrowthChildMaps(List<GrowthChildMap> growthChildMaps) {
+        this.growthChildMaps = growthChildMaps;
+    }
+
+    public List<GrowthItem> getGrowthItems() {
+        return growthItems;
+    }
+
+    public void setGrowthItems(List<GrowthItem> growthItems) {
+        this.growthItems = growthItems;
+    }
 
     public Float getWeight() {
         return weight;

@@ -27,7 +27,7 @@ public class GrowthController extends DefaultController {
     @ResponseBody
     public Object view(@PathVariable("growthId") Long growthId ,  Growth growth) {
 //        growth.setGrowthId(growthId);
-        return this.growthService.select(growthId);
+        return this.growthService.selectByGrowthId(growthId);
     }
 
     @RequestMapping(value="/list", method=RequestMethod.GET)
@@ -39,7 +39,10 @@ public class GrowthController extends DefaultController {
     @RequestMapping(method=RequestMethod.POST)
     @ResponseBody
     public Object add(@RequestBody Growth growth, @RequestBody List<GrowthChildMap> growthChildMaps, @RequestBody List<GrowthItem> growthItems) {
-
+        if( growth.getUserId().equals("") ){
+            this.logger.debug("@@@@ userId required");
+            throw new IllegalArgumentException("UserID");
+        }
         return this.growthService.insert(growth, growthChildMaps, growthItems);
     }
 //    @RequestMapping(value="/{userId}", method=RequestMethod.GET)

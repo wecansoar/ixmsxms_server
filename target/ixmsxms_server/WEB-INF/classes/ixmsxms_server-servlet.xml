@@ -17,6 +17,7 @@
 
 	<!-- Annotation-Based Configuration -->
 	<context:annotation-config />
+
 	<context:component-scan base-package="net.flower.ixmsxms_server" use-default-filters="false">
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />
 	</context:component-scan>
@@ -56,20 +57,18 @@
 
     <util:list id="defaultHandlerInterceptors">
         <bean class="net.flower.ixmsxms_server.utils.DefaultInterceptor"/>
-        <bean class="net.flower.ixmsxms_server.utils.RequiredRefererInterceptor">
-            <constructor-arg>
-                <list>
-                    <value>localhost</value>
-                    <value>cod.dev.daum.net</value>
-                </list>
-            </constructor-arg>
-        </bean>
+        <bean class="net.flower.ixmsxms_server.utils.RequiredRefererInterceptor" />
+            <!--<constructor-arg>-->
+                <!--<list>-->
+                    <!--<value>localhost</value>-->
+                    <!--<value>cod.dev.daum.net</value>-->
+                <!--</list>-->
+            <!--</constructor-arg>-->
+        <!--</bean>-->
     </util:list>
 
-	<bean
-		class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"
-		p:webBindingInitializer-ref="configurableWebBindingInitializer">
-
+    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"
+          p:webBindingInitializer-ref="configurableWebBindingInitializer" >
 		<property name="messageConverters">
   			<bean class="net.flower.ixmsxms_server.utils.GsonHttpMessageConverter" />
   		</property>

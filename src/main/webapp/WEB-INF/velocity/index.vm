@@ -32,8 +32,8 @@
 <ul>
  <li> 리스트 : <a href="/user/list">/user/list</a></li>
  <li> 조회 : <a href="/user/1">/user/1</a></li>
- <li> 등록 : /user/add method=POST </li>
- <li> 수정 : /user/1 method=PUT </li>
+ <li> 등록, 인증 : /user/add method=POST </li>
+ <li> 수정, 프로필 update : /user/1 method=PUT </li>
  <li> 마지막로그인시간 업댓 : /user/login/1 method=PUT </li>
  <li> 탈퇴 : /user/1 method=DELETE </li>
 </ul>
@@ -91,4 +91,8 @@
 </pre>
 <h3>4. 평균 성장 get</h3>
 <ul>
+</ul>
+<h3>5. 공지 </h3>
+<ul>
+    <li> 조회 : <a href="/notice/list">/notice/list</a></li>
 </ul>
