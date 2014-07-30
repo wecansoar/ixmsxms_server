@@ -10,8 +10,35 @@ public class Child extends BaseObject {
     private String birthdayDate;
     private String imageUrl;
     private String status;
+    private Float stature;
+    private Float weight;
+    private Float headCircumference;
     private Date regDatetime;
     private Date modDatetime;
+
+    public Float getStature() {
+        return stature;
+    }
+
+    public void setStature(Float stature) {
+        this.stature = stature;
+    }
+
+    public Float getWeight() {
+        return weight;
+    }
+
+    public void setWeight(Float weight) {
+        this.weight = weight;
+    }
+
+    public Float getHeadCircumference() {
+        return headCircumference;
+    }
+
+    public void setHeadCircumference(Float headCircumference) {
+        this.headCircumference = headCircumference;
+    }
 
     public Long getUserId() {
         return userId;
@@ -28,7 +55,6 @@ public class Child extends BaseObject {
     public void setChildId(Long childId) {
         this.childId = childId;
     }
-
 
     public String getName() {
         return name;

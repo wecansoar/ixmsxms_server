@@ -48,6 +48,9 @@
         , sex
         , birthday_date
         , image_url
+        , stature
+        , weight
+        , head_circumference
         , status
         , reg_datetime
         , mod_datetime
@@ -59,6 +62,9 @@
         , #{sex}
         , #{birthdayDate}
         , #{imageUrl}
+        , #{stature}
+        , #{weight}
+        , #{headCircumference}
         , 'S'
         , sysdate()
         , sysdate()
@@ -77,6 +83,9 @@
         , sex = #{email}
         , birthday_date = #{birthdayDate}
         , image_url = #{imageUrl}
+        , stature = #{stature}
+        , weight = #{weight}
+        , head_circumference = #{headCircumference}
         , status = #{status}
         , mod_datetime = sysdate()
         where 1 = 1
