@@ -30,11 +30,12 @@
 <hr>
 <h3>1. 사용자 정보</h3>
 <ul>
- <li> 리스트 : <a href="/user/list">/user/list</a></li>
- <li> 조회 : <a href="/user/1">/user/1</a></li>
- <li> 등록, 인증 : /user/add method=POST </li>
- <li> 수정, 프로필 update : /user/1 method=PUT </li>
- <li> 마지막로그인시간 업댓 : /user/login/1 method=PUT </li>
+ <li> 조회 : <a href="/user/1?deviceId=IPONE12222220">/user/1?deviceId=IPONE12222220</a> #{deviceId}값도 필요 </li>
+ <li> 처음 앱 설치 후 로딩(userId및 phone번호가 없을 경우) : /user/authentication?deviceId=#{deviceId} </li>
+ <li> 이미 설치후 인증 여부 체크 : /user/authentication?deviceId=#{deviceId}&userId=#{userId}&phone=#{phone} </li>
+ <li> 인증완료후 API콜  : /user/add method=POST </li>
+ <li> 수정, 프로필, mail update : /user/1 method=PUT </li>
+ <li> 마지막로그인시간 업댓 : /user/login?userId=#{userId}&deviceId=#{deviceId}  method=PUT</li>
  <li> 탈퇴 : /user/1 method=DELETE </li>
 </ul>
 

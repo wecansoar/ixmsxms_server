@@ -3,6 +3,7 @@ package net.flower.ixmsxms_server.controller;
 import net.flower.ixmsxms_server.domain.UploadImageFile;
 import net.flower.ixmsxms_server.domain.User;
 import net.flower.ixmsxms_server.service.UploadService;
+import net.flower.ixmsxms_server.service.UserService;
 import net.flower.ixmsxms_server.utils.JSonResultMapping;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -16,10 +17,14 @@ public class MainController {
     @Resource
     private UploadService uploadService;
 
+    @Resource
+    private UserService userService;
+
     @RequestMapping("/index")
 	public String index() {
         return "index";
 	}
+
 
     @RequestMapping(value = "/upload", method = RequestMethod.POST)
     @ResponseBody

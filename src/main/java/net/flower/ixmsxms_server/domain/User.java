@@ -1,17 +1,28 @@
 package net.flower.ixmsxms_server.domain;
 
+import javax.jws.soap.SOAPBinding;
 import java.util.Date;
 
 public class User extends BaseObject {
     private Long userId;
     private String name;
     private String email;
-    private String password;
     private String phone;
     private String userStatus;
     private Date lastLoginDatetime;
     private Date regDatetime;
     private Date modDatetime;
+
+    // related
+    private AuthenticationDevice authenticationDevice;
+
+    public AuthenticationDevice getAuthenticationDevice() {
+        return authenticationDevice;
+    }
+
+    public void setAuthenticationDevice(AuthenticationDevice authenticationDevice) {
+        this.authenticationDevice = authenticationDevice;
+    }
 
     public Date getLastLoginDatetime() {
         return lastLoginDatetime;
@@ -31,10 +42,6 @@ public class User extends BaseObject {
 
     public String getEmail() {
         return this.email;
-    }
-
-    public String getPassword() {
-        return this.password;
     }
 
     public String getPhone() {
@@ -65,11 +72,6 @@ public class User extends BaseObject {
 
     public User setEmail(String email) {
         this.email = email;
-        return this;
-    }
-
-    public User setPassword(String password) {
-        this.password = password;
         return this;
     }
 

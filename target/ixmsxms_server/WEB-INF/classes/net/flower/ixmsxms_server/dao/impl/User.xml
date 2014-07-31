@@ -4,13 +4,18 @@
 
 <mapper namespace="net.flower.ixmsxms_server.dao.UserDao">
     <select id="select"
-        parameterType="Long"
+        parameterType="net.flower.ixmsxms_server.domain.User"
         resultType="net.flower.ixmsxms_server.domain.User">
         select
-        *
-        from user
+        u.*, a.device_id as 'authenticationDevice.device_id', a.ua_info as 'authenticationDevice.ua_info',
+         a.last_login_datetime as 'authenticationDevice.last_login_datetime'
+        from user u, authentication_device a
         where 1 = 1
-        and user_id = #{userId}
+        and u.user_id = #{userId}
+        and a.device_id = #{authenticationDevice.deviceId}
+        and u.user_id = a.user_id
+        and u.user_status != 'LEAVE'
+        and a.status = 'S'
     </select>
 
     <sql id="fromAndWhere">
@@ -18,22 +23,17 @@
         where 1 = 1
     </sql>
 
-    <select id="selectList"
-        parameterType="net.flower.ixmsxms_server.domain.User"
-        resultType="net.flower.ixmsxms_server.domain.User">
+
+    <select id="selectByUserInfo"
+            parameterType="net.flower.ixmsxms_server.domain.User"
+            resultType="net.flower.ixmsxms_server.domain.User">
         select
         *
-        <include refid="fromAndWhere"/>
-        order by user_id desc
-        limit #{start}, #{count}
-    </select>
-
-    <select id="selectListCount"
-        parameterType="net.flower.ixmsxms_server.domain.User"
-        resultType="java.lang.Integer">
-        select
-        count(*)
-        <include refid="fromAndWhere"/>
+        from user u, authentication_device a
+        and u.user_id = a.user_id
+        and u.phone = #{phone}
+        and a.device_id = #{deviceId}
+        and a.status = 'S'
     </select>
 
     <insert id="insert"
@@ -42,7 +42,6 @@
         (
               name
             , email
-            , password
             , phone
             , user_status
             , reg_datetime
@@ -52,14 +51,13 @@
         (
               #{name}
             , #{email}
-            , #{password}
             , #{phone}
-            , #{userStatus}
+            , 'AUTH'
             , sysdate()
             , sysdate()
         )
 
-        <selectKey keyProperty="userId" resultType="Long" order="AFTER">
+        <selectKey keyProperty="userId" resultType="java.lang.Long" order="AFTER">
             select last_insert_id()
         </selectKey>
     </insert>
@@ -70,7 +68,6 @@
         set
           name = #{name}
         , email = #{email}
-        , password = #{password}
         , phone = #{phone}
         , user_status = #{userStatus}
         , mod_datetime = sysdate()
@@ -78,7 +75,7 @@
         and user_id = #{userId}
     </update>
 
-    <update id="updateByLastlogin" >
+    <update id="updateByLastlogin" parameterType="net.flower.ixmsxms_server.domain.User" >
         update user
            set last_login_datetime = sysdate()
          where 1 = 1

@@ -3,6 +3,8 @@ package net.flower.ixmsxms_server.controller;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
+import net.flower.ixmsxms_server.domain.AuthenticationDevice;
+import net.flower.ixmsxms_server.service.AuthenticationDeviceService;
 import net.flower.ixmsxms_server.utils.JSonResultMapping;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,16 +27,23 @@ public class UserController extends DefaultController {
     @Resource
     private UserService userService;
 
-    @RequestMapping(value="/list", method=RequestMethod.GET)
+    @RequestMapping("/authentication")
     @ResponseBody
-    public Object list(User user) {
-        return this.userService.selectList(user);
+    public Object authentication(@RequestBody User user){
+        return this.userService.authentication(user);
     }
 
     @RequestMapping(value="/{userId}", method=RequestMethod.GET)
     @ResponseBody
-    public Object view(@PathVariable("userId") Long userId, User user) {
-        return this.userService.select(userId);
+    public Object view(@PathVariable("userId") Long userId, User user, AuthenticationDevice authenticationDevice) {
+
+        user.setAuthenticationDevice(authenticationDevice);
+        System.out.println("VIOLET ");
+        System.out.println(user);
+
+
+        return this.userService.select(user);
+
     }
 
     @RequestMapping(method=RequestMethod.POST)
@@ -46,19 +55,20 @@ public class UserController extends DefaultController {
     @RequestMapping(value="/{userId}", method=RequestMethod.PUT)
     @ResponseBody
     public Object edit(@PathVariable("userId") Long userId, @RequestBody User user) {
+        user.setUserStatus("JOIN");
         return this.userService.update(user);
     }
 
-    @RequestMapping(value="/login/{userId}", method=RequestMethod.PUT)
+    @RequestMapping(value="/login", method=RequestMethod.PUT)
     @ResponseBody
-    public Object editLogin(@PathVariable("userId") Long userId) {
-        return this.userService.updateLastLogin(userId);
+    public Object editLogin(User user) {
+        return this.userService.updateLastLogin(user);
     }
 
     @RequestMapping(value="/{userId}", method=RequestMethod.DELETE)
     @ResponseBody
-    public Object delete(@PathVariable("userId") Long userId) {
-        return this.userService.delete(userId);
+    public Object delete(@PathVariable("userId") Long userId, User user) {
+        return this.userService.delete(user);
     }
 
 }

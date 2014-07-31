@@ -1,0 +1,88 @@
+<?xml version="1.1" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="net.flower.ixmsxms_server.dao.AuthenticationDeviceDao">
+
+    <sql id="fromAndWhere">
+        from authentication_device
+        where 1 = 1
+        and status = 'S'
+    </sql>
+
+
+    <select id="selectListByDeviceId"
+            parameterType="String"
+            resultType="net.flower.ixmsxms_server.domain.AuthenticationDevice">
+        select
+        *
+        <include refid="fromAndWhere"/>
+        and device_id = #{deviceId}
+    </select>
+
+    <select id="selectListCount"
+        parameterType="net.flower.ixmsxms_server.domain.AuthenticationDevice"
+        resultType="java.lang.Integer">
+        select
+        count(*)
+        <include refid="fromAndWhere"/>
+    </select>
+
+    <insert id="insert"
+            parameterType="net.flower.ixmsxms_server.domain.AuthenticationDevice">
+        insert into authentication_device
+        (
+        user_id
+        , device_id
+        , ua_info
+        , last_login_datetime
+        , status
+        , reg_datetime
+        , mod_datetime
+        )
+        values
+        (
+        #{userId}
+        , #{deviceId}
+        , #{uaInfo}
+        , sysdate()
+        , 'S'
+        , sysdate()
+        , sysdate()
+        )
+
+        <selectKey keyProperty="id" resultType="Long" order="AFTER">
+            select last_insert_id()
+        </selectKey>
+    </insert>
+
+    <update id="update"
+            parameterType="net.flower.ixmsxms_server.domain.AuthenticationDevice">
+        update user
+        set status = #{userStatus}
+        , mod_datetime = sysdate()
+        where 1 = 1
+        and user_id = #{userId}
+        and device_id = #{deviceId}
+    </update>
+
+    <update id="updateByLastlogin" parameterType="net.flower.ixmsxms_server.domain.AuthenticationDevice">
+        update authentication_device
+        set last_login_datetime = sysdate()
+        where 1 = 1
+        and user_id = #{userId}
+        and device_id = #{deviceId}
+    </update>
+
+    <delete id="delete" parameterType="net.flower.ixmsxms_server.domain.AuthenticationDevice">
+        update authentication_device
+        set
+        status = 'D'
+        , mod_datetime = sysdate()
+        where 1 = 1
+        and user_id = #{userId}
+        <if test='deviceId != null'>
+        and device_id = #{deviceId}
+        </if>
+    </delete>
+</mapper>
